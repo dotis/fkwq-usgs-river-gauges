@@ -4,4 +4,19 @@ title: "fkwq-usgs-river-gauges"
 
 This is a Quarto website.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+## For each row in data/[...]csv do API call:
+
+params and station ID values in quotes
+
+The API requires a call like this:
+
+https://waterdata.usgs.gov/nwis/dv?cb_{param_code}=on&format=rdb&site_no={sta_ID}&referred_module=sw&period=&begin_date=01-01-1950&end_date=12-31-2024 ,''ContentType'',''raw''
+
+Examples from the first row of the csv file:
+
+param_code =  00060 (this is for discharge; each parameter has a different code)
+
+sta_ID = 02292900 (must have the 0 in front)
+
+## Plot the data

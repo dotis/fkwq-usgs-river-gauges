@@ -1,0 +1,38 @@
+```{R}
+library(glue)
+library(httr)
+
+# Read the input CSV file
+sites <- read.csv("data/SouthFL_USGS_ACE_SiteList.csv")
+
+# Specify the base URL
+base_url <- "https://waterdata.usgs.gov/nwis/dv?cb_{param_code}=on&format=rdb&site_no={sta_ID}&referred_module=sw&period=&begin_date=01-01-1950&end_date=12-31-2024"
+
+# Create a directory to save the downloaded files
+output_dir <- "data/downloads"
+dir.create(output_dir, showWarnings = FALSE)
+
+# Loop through each row of the dataframe
+for (i in seq_len(nrow(sites))) {
+  # Extract parameters from the current row
+  sta_ID <- sites$USGS_ID[i] # Replace with the actual column name
+  param_code <- sites$parameter2[i] # Replace with the actual column name
+  
+  # Construct the URL with parameters
+  query_params <- list(param1 = param1, param2 = param2)
+  url <- modify_url(base_url, query = query_params)
+  
+  # Construct the output file name
+  output_file <- file.path(output_dir, paste0("file_", i, ".csv"))
+  
+  # Download the file and save it locally
+  tryCatch({
+    GET(url, write_disk(output_file, overwrite = TRUE))
+    message("Downloaded: ", output_file)
+  }, error = function(e) {
+    warning("Failed to download for row ", i, ": ", conditionMessage(e))
+  })
+}
+
+message("All downloads completed.")
+```
