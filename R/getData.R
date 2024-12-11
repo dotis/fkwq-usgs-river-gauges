@@ -23,7 +23,7 @@ getData <- function(station_id, param_name){
 
 doDataRequest <- function(param_code, station_id){
   request <- glue::glue(
-    "https://waterdata.usgs.gov/nwis/dv?cb_{param_code}=on&format=rdb&site_no={station_id}&referred_module=sw&period=&begin_date=01-01-1950&end_date=12-31-2024"
+    "https://waterdata.usgs.gov/nwis/dv?cb_{param_code}=on&format=rdb&site_no={station_id}&referred_module=sw&period=&begin_date=01-01-2012&end_date=12-31-2024"
   )
   
   print("fetching from ")
