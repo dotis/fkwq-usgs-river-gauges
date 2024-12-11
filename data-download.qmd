@@ -1,4 +1,5 @@
 ```{R}
+#| eval: false
 library(glue)
 library(httr)
 
