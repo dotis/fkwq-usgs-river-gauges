@@ -9,6 +9,8 @@ website:
         text: Home
       # - about.qmd
       - map.qmd
+      - href: flowDownRiver.qmd
+        text: Downriver Flow
 
 format:
   html:
