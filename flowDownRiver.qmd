@@ -1,0 +1,89 @@
+---
+title: "Visualizations of River Discharge flowing downstream"
+---
+
+```{R}
+library(glue)
+
+stations <-c(
+  "02292900",
+  "02276998",
+  "022908295"
+)
+
+metadata <- read.csv(
+  "data/SouthFL_USGS_ACE_SiteList.csv",
+  colClasses = "character",
+  quote = "\""
+)
+
+# Remove any remaining quotes from all elements in the dataframe
+metadata <- as.data.frame(apply(metadata, 2, function(x) gsub("\"", "", x)))
+station_id <- stations[1]
+
+# Get row from metadata with USGS_ID matching station_id
+metadata_row <- metadata[metadata$USGS_ID == station_id, ]
+
+# Get param_code from 'Disch' column of metadata row
+param_code <- metadata_row$Disch
+
+request <- glue(
+  "https://waterdata.usgs.gov/nwis/dv?cb_{param_code}=on&format=rdb&site_no={station_id}&referred_module=sw&period=&begin_date=01-01-1950&end_date=12-31-2024"
+)
+
+print(request)
+
+# Perform the request and read the data
+library(httr)
+
+response <- GET(request)
+
+# Check if the request was successful
+if (status_code(response) == 200) {
+  # Convert the response content to a text format
+  response_content <- content(response, as = "text")
+  
+  # Read the data into a dataframe (assuming tab-separated data)
+  data <- read.table(text = response_content, header = TRUE, sep = "\t", comment.char = "#")
+  
+  # Display the first few rows of the data
+  print(head(data))
+} else {
+  # Print an error message if the request failed
+  stop("Failed to fetch data. Status code: ", status_code(response))
+}
+
+# drop 1st row of data that has some kind of metadata. example of 1st row:
+# 1          5s      15s        20d                 14n                    10s
+data <- data[-1, ]
+```
+
+```{R}
+df <- data
+# Ensure 'datetime' is properly converted
+df$datetime <- as.Date(df$datetime, format = "%Y-%m-%d")
+
+df <- df[!is.na(df$datetime), ]  # Remove rows with NA in datetime
+
+# Check and convert 'X171001_00060_00003' to numeric
+df$X171001_00060_00003 <- as.numeric(df$X171001_00060_00003)
+df <- df[!is.na(df$X171001_00060_00003), ]  # Remove rows with NA
+
+
+# Calculate a moving average
+library(zoo)
+df$moving_avg <- rollmean(df$X171001_00060_00003, k = 365, fill = NA, align = "right")
+
+# Create the time series plot
+library(ggplot2)
+ggplot(df, aes(x = datetime, y = X171001_00060_00003)) +
+  geom_point(shape = 4, color = "black", alpha = 0.1) +  # Transparent blue "x"
+  geom_line(aes(y = moving_avg), color = "blue", size = 1) +  # Moving average line
+  labs(
+    title = "Time Series Plot",
+    x = "Datetime",
+    y = "Value"
+  ) +
+  theme_minimal()
+
+```

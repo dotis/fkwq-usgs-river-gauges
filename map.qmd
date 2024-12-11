@@ -10,7 +10,7 @@ Map of stations.
 library(leaflet)
 
 # Load the data
-data <- read.csv("data/SouthFL_USGS_ACE_SiteList.csv")  # Replace 'your_file.csv' with your file path
+data <- read.csv("data/SouthFL_USGS_ACE_SiteList.csv")
 
 leaflet(data) %>%
   addTiles() %>%  # Add default OpenStreetMap tiles
