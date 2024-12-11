@@ -7,12 +7,20 @@ website:
     left:
       - href: index.qmd
         text: Home
-      # - about.qmd
+        
       - map.qmd
+      
       - href: flowDownRiver.qmd
-        text: Downriver Flow
-      - href: stationInspect.qmd
-        text: Single Station view
+        text: Okeechobee Outflows
+        
+      - text: Single Station View
+        href: stationInspect.qmd
+
+      - text: Downstream Flows
+        menu:
+        - href: stationInspect.qmd
+          text: Single Station view
+
 
 format:
   html:
