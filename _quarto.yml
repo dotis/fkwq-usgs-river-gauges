@@ -8,8 +8,6 @@ website:
       - href: index.qmd
         text: Home
         
-      - map.qmd
-      
       - href: okeeOutflow.qmd
         text: Okeechobee Outflows
         
