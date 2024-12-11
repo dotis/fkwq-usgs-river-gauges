@@ -15,7 +15,7 @@ df <- getData(station_id, "Disch")
 ```{R}
 # Calculate a moving average
 library(zoo)
-df$moving_avg <- rollmean(df$value, k = 365, fill = NA, align = "center")
+df$moving_avg <- rollmean(df$value, k = 30, fill = NA, align = "center")
 
 # Create the time series plot
 library(ggplot2)
