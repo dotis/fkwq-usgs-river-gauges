@@ -18,8 +18,8 @@ leaflet(data) %>%
     ~Lon, ~Lat,
     label = ~Station_shortname,  # Hover labels
     radius = 5,                 # Adjust the size of the circle markers
-    color = "blue",             # Marker border color
-    fillColor = "lightblue",    # Marker fill color
+    color = "black",             # Marker border color
+    fillColor = "blue",    # Marker fill color
     fillOpacity = 0.7,          # Opacity of the fill color
     popup = ~paste("<b>Station:</b>", Station_shortname)
   )
