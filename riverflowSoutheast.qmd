@@ -1,14 +1,10 @@
 ---
-title: "Total Discharge Out of Okeechobee"
+title: "Southeastern Flow out of Okeechobee"
 ---
 
 ```{R}
-# lake outflow total
+# southeastern flow out of Okeechobee
 stations <- c(
-  "S-351",
-  "S-354",
-  "S-308",
-  "LV8",
   "HillsCan"
 )
 

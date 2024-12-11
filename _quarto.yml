@@ -16,8 +16,12 @@ website:
 
       - text: Downstream Flows
         menu:
-        - href: stationInspect.qmd
-          text: Single Station view
+        - riverflowSouth.qmd
+        - riverflowEast.qmd
+        - riverflowWest.qmd
+        - riverflowSoutheast.qmd
+        - riverflowSouthwest.qmd
+
 
 
 format:

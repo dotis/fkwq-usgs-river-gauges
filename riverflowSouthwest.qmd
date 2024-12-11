@@ -1,15 +1,12 @@
 ---
-title: "Total Discharge Out of Okeechobee"
+title: "Southwestern Flow out of Everglades"
 ---
 
 ```{R}
-# lake outflow total
+# SW flow out of Everglades
 stations <- c(
-  "S-351",
-  "S-354",
-  "S-308",
-  "LV8",
-  "HillsCan"
+  "BotCr",
+  "Flam"
 )
 
 param_name <- "Disch"

@@ -1,7 +1,3 @@
-## TODO:
-* map of stations w/ shortname
-* discharge watch for series of stations in downstream flow
-
 ## NOTES:
 999 indicates param is not measured at that location.
 
