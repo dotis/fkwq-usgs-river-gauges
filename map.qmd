@@ -13,7 +13,7 @@ library(leaflet)
 data <- read.csv("data/SouthFL_USGS_ACE_SiteList.csv")
 
 leaflet(data) %>%
-  addTiles() %>%  # Add default OpenStreetMap tiles
+  addProviderTiles(providers$USGS.USTopo) %>%
   addCircleMarkers(
     ~Lon, ~Lat,
     label = ~Station_shortname,  # Hover labels
