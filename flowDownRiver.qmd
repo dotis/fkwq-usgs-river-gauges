@@ -3,10 +3,43 @@ title: "Visualizations of River Discharge flowing downstream"
 ---
 
 ```{R}
-stations <-c(
-  "02292900",
-  "02276998",
-  "022908295"
+
+# eastward flow out of Okeechobee
+stations <- c(
+  "S-308",
+  "S-80"
+)
+
+# westward flow out of Okeechobee
+stations <- c(
+  "S-354",
+  "S-79"
+)
+
+# southeastern flow out of Okeechobee
+stations <- c(
+  "HillsCan"
+)
+
+# south flow out of Okeechobee
+stations <- c(
+  "S-351",
+  "S-12"
+)
+
+# SW flow out of Everglades
+stations <- c(
+  "BotCr",
+  "Flam"
+)
+
+# lake outflow total
+stations <- c(
+  "S-351",
+  "S-354",
+  "S-308",
+  "LV8",
+  "HillsCan"
 )
 
 param_name <- "Disch"
@@ -14,13 +47,13 @@ param_name <- "Disch"
 source("R/getData.R")
 
 df <- data.frame()
-for(station_id in stations){
+for(station_shortname in stations){
   # Get the data for the current station using the parameter name
-  df <- getData(station_id, param_name)
+  df <- getData(station_shortname, param_name)
 
   # Calculate a moving average
   library(zoo)
-  df$moving_avg <- rollmean(df$value, k = 365, fill = NA, align = "right")
+  df$moving_avg <- rollmean(df$value, k = 90, fill = NA, align = "right")
   
   
   # Create the time series plot

@@ -1,15 +1,21 @@
-getData <- function(station_id, param_name){
+getData <- function(station_shortname, param_name){
   source("R/getMetadata.R")
   metadata <- getMetadata()
   
-  # Get row from metadata with USGS_ID matching station_id
-  metadata_row <- metadata[metadata$USGS_ID == station_id, ]
+  # Get row from metadata with matching station_shortname
+  metadata_row <- metadata[metadata$Station_shortname == station_shortname, ]
   
-  # Get param_code from column of metadata row
+  # Get data from column of metadata row
   param_code <- metadata_row[[param_name]]
+  station_id <- metadata_row[["USGS_ID"]]
   
+  # check lookup was okay
+  if (!(isTRUE(is.character(param_code)) && isTRUE(nzchar(param_code)) &&
+        isTRUE(is.character(station_id)) && isTRUE(nzchar(station_id)))) {
+    stop(glue::glue("metadata lookup failed for station {station_shortname}"))
+  }
   # check for cached file
-  fname <- glue::glue("data/cache/{station_id}___{param_name}.RDS")
+  fname <- glue::glue("data/cache/{station_id}_{param_code}.RDS")
   if (file.exists(fname)){
     print('using cached data')
     df <- readRDS(fname)

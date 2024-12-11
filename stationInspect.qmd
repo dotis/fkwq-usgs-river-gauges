@@ -1,29 +1,31 @@
 ---
 title: "Inspect Data for Given Station"
 params:
-  station_id: 02276998
+  station_shortname: S-12
   parameter: Disch
 ---
 
 ```{R}
-station_id <- params$station_id
+station_shortname <- params$station_shortname
 
 source("R/getData.R")
-df <- getData(station_id, "Disch")
+df <- getData(station_shortname, "Disch")
 ```
 
 ```{R}
 # Calculate a moving average
 library(zoo)
-df$moving_avg <- rollmean(df$value, k = 30, fill = NA, align = "center")
+k <- 30
+df$moving_avg <- rollmean(df$value, k = k, fill = NA, align = "center")
 
 # Create the time series plot
 library(ggplot2)
+library(glue)
 ggplot(df, aes(x = datetime, y = value)) +
   geom_point(shape = 4, color = "black", alpha = 0.1) +  # Transparent blue "x"
   geom_line(aes(y = moving_avg), color = "blue", size = 1) +  # Moving average line
   labs(
-    title = "Time Series Plot",
+    title = glue("{station_shortname} Discharge with {k}d MA"),
     x = "Datetime",
     y = "Value"
   ) +
