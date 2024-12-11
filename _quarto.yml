@@ -11,6 +11,8 @@ website:
       - map.qmd
       - href: flowDownRiver.qmd
         text: Downriver Flow
+      - href: stationInspect.qmd
+        text: Single Station view
 
 format:
   html:

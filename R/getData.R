@@ -1,4 +1,7 @@
 getData <- function(station_id, param_name){
+  source("R/getMetadata.R")
+  metadata <- getMetadata()
+  
   # Get row from metadata with USGS_ID matching station_id
   metadata_row <- metadata[metadata$USGS_ID == station_id, ]
   
@@ -55,9 +58,16 @@ doDataRequest <- function(param_code, station_id){
   
   data <- data[!is.na(data$datetime), ]  # Remove rows with NA in datetime
   
-  # NOTE: assumes X171001_00060_00003 is always the name of the data col?
-  # Check and convert 'X171001_00060_00003' to numeric
-  data$X171001_00060_00003 <- as.numeric(data$X171001_00060_00003)
-  data <- data[!is.na(data$X171001_00060_00003), ]  # Remove rows with NA
+  # NOTE: assumes data is always fourth row
+  # Check and convert data row to numeric
+  data[[4]] <- as.numeric(data[[4]])
+  data <- data[!is.na(data[[4]]), ]  # Remove rows with NA
+  
+  # rename columns
+  names(data)[4] <- "value"
+  names(data)[5] <- "_cd"
+
+  # drop cols 1 & 2
+  data <- data[, -c(1, 2)]
   return(data)
 }

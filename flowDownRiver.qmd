@@ -3,36 +3,37 @@ title: "Visualizations of River Discharge flowing downstream"
 ---
 
 ```{R}
-
-source("R/getMetadata.R")
-metadata <- getMetadata()
-
 stations <-c(
   "02292900",
   "02276998",
   "022908295"
 )
-station_id <- stations[1]
+
+param_name <- "Disch"
 
 source("R/getData.R")
-df <- getData(station_id, "Disch")
-```
 
-```{R}
-# Calculate a moving average
-library(zoo)
-df$moving_avg <- rollmean(df$X171001_00060_00003, k = 365, fill = NA, align = "right")
+df <- data.frame()
+for(station_id in stations){
+  # Get the data for the current station using the parameter name
+  df <- getData(station_id, param_name)
 
-# Create the time series plot
-library(ggplot2)
-ggplot(df, aes(x = datetime, y = X171001_00060_00003)) +
-  geom_point(shape = 4, color = "black", alpha = 0.1) +  # Transparent blue "x"
-  geom_line(aes(y = moving_avg), color = "blue", size = 1) +  # Moving average line
-  labs(
-    title = "Time Series Plot",
-    x = "Datetime",
-    y = "Value"
-  ) +
-  theme_minimal()
-
+  # Calculate a moving average
+  library(zoo)
+  df$moving_avg <- rollmean(df$value, k = 365, fill = NA, align = "right")
+  
+  
+  # Create the time series plot
+  library(ggplot2)
+  p <- ggplot(df, aes(x = datetime, y = value)) +
+    geom_point(shape = 4, color = "black", alpha = 0.1) +  # Transparent blue "x"
+    geom_line(aes(y = moving_avg), color = "blue", size = 1) +  # Moving average line
+    labs(
+      title = "Time Series Plot",
+      x = "Datetime",
+      y = "Value"
+    ) +
+    theme_minimal()
+  print(p)
+}
 ```
