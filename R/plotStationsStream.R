@@ -55,7 +55,7 @@ plotStationsStream <- function(stations, param_name){
   # all_data_summary$days_since_epoch <- as.numeric(all_data_summary$datetime - as.Date("1970-01-01"))
   
   # bug workaround see https://github.com/davidsjoberg/ggstream/issues/16
-  n_grid <- length(all_data_summary$datetime)+0.2*length(all_data_summary$datetime)
+  n_grid <- 1.2*length(all_data_summary[[1]])
   
   # Create the streamgraph
   p <- ggplot(all_data_summary, aes(x = datetime, y = value, fill = station)) +
