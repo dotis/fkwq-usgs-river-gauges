@@ -45,6 +45,11 @@ doDataRequest <- function(param_code, station_id){
     # Convert the response content to a text format
     response_content <- content(response, as = "text")
     
+    # check for no data response
+    if (response_content == "No sites/data found using the selection criteria specified \n"){
+      stop(response_content)
+    }
+    
     # Read the data into a dataframe (assuming tab-separated data)
     data <- read.table(text = response_content, header = TRUE, sep = "\t", comment.char = "#")
     
