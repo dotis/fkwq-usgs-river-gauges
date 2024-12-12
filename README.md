@@ -22,6 +22,10 @@
   * should see more water going to everglades instead of st lucie et al.
   * start: disch for stations in a downstream flow
 
+#### Notes/ideas:
+1. Perhaps add a tab called "historical flow" showing data from 2000-present. Apply monthly moving avg.
+2. Then, have a "recent flow" that will show data from the past year with no moving avg.
+3. Sum certain groups of stations that represent similar flow regimes (@dotis needs to make groups)
 
 
 
