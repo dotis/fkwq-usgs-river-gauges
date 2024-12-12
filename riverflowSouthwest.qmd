@@ -2,7 +2,10 @@
 title: "Southwestern Flow out of Everglades"
 ---
 
+This report is temporarily disabled because station `Flam` is not reporting discharge data.
+
 ```{R}
+#| eval: false
 # SW flow out of Everglades
 stations <- c(
   "BotCr",
