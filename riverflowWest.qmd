@@ -5,7 +5,7 @@ title: "Westward Flow out of Okeechobee"
 ```{R}
 # westward flow out of Okeechobee
 stations <- c(
-  "S-354",
+  "S-77",
   "S-79"
 )
 
