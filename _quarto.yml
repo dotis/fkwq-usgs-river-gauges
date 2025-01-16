@@ -21,7 +21,9 @@ website:
         - riverflowWest.qmd
         - riverflowSoutheast.qmd
         - riverflowSouthwest.qmd
-
+      
+      - href: https://github.com/marinebon/data_reports
+        text: Source Code on GitHub
 format:
   html:
     theme: cosmo
