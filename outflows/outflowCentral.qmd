@@ -1,0 +1,24 @@
+---
+title: "Outflow to Gulf (Central)"
+---
+
+```{R}
+stations <- c(
+  # "3mCan",  # metadata lookup failed 
+  "M-40",
+  # "S-152",  # no Disch
+  "S-12"
+  # "SR_1",  # no Disch
+  # "SH_4"  # no Disch
+)
+
+param_name <- "Disch"
+
+source(here::here("R/plotStationsLine.R"))
+plotStationsLine(stations, param_name)
+
+source(here::here("R/plotStationsStream.R"))
+plotStationsStream(stations, param_name)
+
+
+```

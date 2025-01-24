@@ -1,0 +1,22 @@
+---
+title: "Outflow to Atlantic"
+---
+
+```{R}
+stations <- c( # N to S
+  # "C8Can",  # no Disch code
+  # "TamCan",  # no Disch code
+  "SnapCr"
+  # "BlkCrCan"  # no Disch code
+)
+
+param_name <- "Disch"
+
+source("../R/plotStationsLine.R")
+plotStationsLine(stations, param_name)
+
+source("../R/plotStationsStream.R")
+plotStationsStream(stations, param_name)
+
+
+```

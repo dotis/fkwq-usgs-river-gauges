@@ -1,5 +1,5 @@
 getData <- function(station_shortname, param_name){
-  source("R/getMetadata.R")
+  source(here::here("R/getMetadata.R"))
   metadata <- getMetadata()
   
   # Get row from metadata with matching station_shortname
@@ -12,10 +12,26 @@ getData <- function(station_shortname, param_name){
   # check lookup was okay
   if (!(isTRUE(is.character(param_code)) && isTRUE(nzchar(param_code)) &&
         isTRUE(is.character(station_id)) && isTRUE(nzchar(station_id)))) {
-    stop(glue::glue("metadata lookup failed for station {station_shortname}"))
+    msg <- glue::glue(
+      "metadata lookup failed for station '{station_shortname}' param '{param_name}'"
+    )
+    print(msg)
+    message(msg)
+    flush.console()
+    stop(msg)
   }
+  
+  # check if param_code is NA value (999)
+  if(param_code == 999){
+    stop(glue::glue(
+      "stn={station_shortname} param code is NA value: {param_code}."
+    ))
+  }
+  
   # check for cached file
-  fname <- glue::glue("data/cache/{station_id}_{param_code}.RDS")
+  fname <- here::here(glue::glue(
+    "data/cache/{station_id}_{param_code}.RDS"
+  ))
   if (file.exists(fname)){
     print('using cached data')
     df <- readRDS(fname)

@@ -1,0 +1,24 @@
+---
+title: "Outflow to Gulf (North)"
+---
+
+```{R}
+stations <- c(
+  # "BLKRv",  # no Disch
+  "PUMRv",
+  "FURv",
+  "EASTRv"
+  # "BARRv",  # no Disch
+  # "TURRv"  # no Disch
+)
+
+param_name <- "Disch"
+
+source(here::here("R/plotStationsLine.R"))
+plotStationsLine(stations, param_name)
+
+source(here::here("R/plotStationsStream.R"))
+plotStationsStream(stations, param_name)
+
+
+```

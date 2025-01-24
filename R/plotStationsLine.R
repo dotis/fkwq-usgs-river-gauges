@@ -1,5 +1,5 @@
 plotStationsLine <- function(stations, param_name){
-  source("R/getData.R")
+  source(here::here("R/getData.R"))
   
   # Create an empty data frame to hold all data
   all_data <- data.frame()
@@ -7,6 +7,7 @@ plotStationsLine <- function(stations, param_name){
   # Loop through stations and get data for each
   for (station_shortname in stations) {
     # Get the data for the current station using the parameter name
+    # print(glue::glue("station:{station_shortname}"))
     df <- getData(station_shortname, param_name)
     
     # Calculate a moving average

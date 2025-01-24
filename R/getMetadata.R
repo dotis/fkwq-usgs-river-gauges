@@ -1,6 +1,6 @@
 getMetadata <- function(){
   metadata <- read.csv(
-    "data/SouthFL_USGS_ACE_SiteList.csv",
+    here::here("data/SouthFL_USGS_ACE_SiteList.csv"),
     colClasses = "character",
     quote = "\""
   )

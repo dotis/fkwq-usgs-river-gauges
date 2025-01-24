@@ -21,7 +21,15 @@ website:
         - riverflowWest.qmd
         - riverflowSoutheast.qmd
         - riverflowSouthwest.qmd
-      
+        
+      - text: Regional Outflows
+        menu:
+        - outflowNorth.qmd
+        - outflowWest.qmd
+        - outflowSouth.qmd
+        - outflowEash.qmd
+        - outflowCentral.qmd
+        
       - href: https://github.com/marinebon/data_reports
         text: Source Code on GitHub
 format:

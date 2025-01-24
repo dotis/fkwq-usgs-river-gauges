@@ -8,7 +8,7 @@ stations <- c(
   "S-351",
   "S-354",
   "S-308",
-  "LV8",
+  # "LV8",  # no Disch
   "HillsCan"
 )
 
