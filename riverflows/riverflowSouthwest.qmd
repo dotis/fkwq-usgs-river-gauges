@@ -3,6 +3,9 @@ title: "Southwestern Flow out of Everglades"
 ---
 
 This report is temporarily disabled because station `Flam` is not reporting discharge data.
+```{R setup}
+library(here)
+```
 
 ```{R}
 #| eval: false
@@ -14,10 +17,10 @@ stations <- c(
 
 param_name <- "Disch"
 
-source("R/plotStationsLine.R")
+source(here("R/plotStationsLine.R"))
 plotStationsLine(stations, param_name)
 
-source("R/plotStationsStream.R")
+source(here("R/plotStationsStream.R"))
 plotStationsStream(stations, param_name)
 
 
