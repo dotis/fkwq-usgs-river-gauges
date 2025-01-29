@@ -27,7 +27,7 @@ website:
         - outflows/outflowNorth.qmd
         - outflows/outflowWest.qmd
         - outflows/outflowSouth.qmd
-        - outflows/outflowEash.qmd
+        - outflows/outflowEast.qmd
         - outflows/outflowCentral.qmd
         
       - href: https://github.com/marinebon/data_reports
