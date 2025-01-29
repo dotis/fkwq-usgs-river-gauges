@@ -33,10 +33,10 @@ getData <- function(station_shortname, param_name){
     "data/cache/{station_id}_{param_code}.RDS"
   ))
   if (file.exists(fname)){
-    print('using cached data')
+    message('using cached data')
     df <- readRDS(fname)
   } else {
-    print('requesting data from web')
+    message('requesting data from web')
     df <- doDataRequest(param_code, station_id)
     saveRDS(df, fname)
   }

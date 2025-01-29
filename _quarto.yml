@@ -38,5 +38,6 @@ format:
     css: styles.css
     toc: true
     code-fold: true
-
+    message: false
+    warning: false
 
