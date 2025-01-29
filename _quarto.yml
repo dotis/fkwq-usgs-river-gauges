@@ -16,11 +16,11 @@ website:
 
       - text: Downstream Flows
         menu:
-        - riverflowSouth.qmd
-        - riverflowEast.qmd
-        - riverflowWest.qmd
-        - riverflowSoutheast.qmd
-        - riverflowSouthwest.qmd
+        - riverflows/riverflowSouth.qmd
+        - riverflows/riverflowEast.qmd
+        - riverflows/riverflowWest.qmd
+        - riverflows/riverflowSoutheast.qmd
+        - riverflows/riverflowSouthwest.qmd
         
       - text: Regional Outflows
         menu:
