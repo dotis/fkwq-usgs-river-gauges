@@ -45,7 +45,7 @@ For local development the terminal command `quarto preview` can be used.
 1. Out to West: S77, S79 (good - S78 is very low, don't include)
 2. Out to East: S308, S80 (good); could add StLcRvSt - has bad vals
 3. Out to South: S190 only (need to change) 
-4. Out to Southeast: S271, HillsCan, S351
+4. Out to Southeast: S354, S351, HillsCan (need to change)
 5. 
 
 
