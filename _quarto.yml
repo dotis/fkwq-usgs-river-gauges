@@ -20,7 +20,6 @@ website:
         - riverflows/riverflowEast.qmd
         - riverflows/riverflowWest.qmd
         - riverflows/riverflowSoutheast.qmd
-        - riverflows/riverflowSouthwest.qmd
         
       - text: Regional Outflows
         menu:
