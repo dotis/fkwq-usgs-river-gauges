@@ -8,6 +8,8 @@ library(here)
 ```{R}
 # southeastern flow out of Okeechobee
 stations <- c(
+  "S-354",
+  "S-351",
   "HillsCan"
 )
 
