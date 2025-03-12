@@ -41,6 +41,13 @@ For local development the terminal command `quarto preview` can be used.
 3. Sum certain groups of stations that represent similar flow regimes (@dotis needs to make groups)
 4. use `Disch_tdflt` if available fallback to `Disch` if not available
 
+#### Lake Okeechobee flows:
+1. Out to West: S77, S79 (good - S78 is very low, don't include)
+2. Out to East: S308, S80 (good); could add StLcRvSt - has bad vals
+3. Out to South: S190 only (need to change) 
+4. Out to Southeast: S271, HillsCan, S351
+5. 
+
 
 ## For each row in data/[...]csv do API call:
 
