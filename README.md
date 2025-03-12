@@ -1,3 +1,7 @@
+## Usage:
+This is a quarto website published to github pages using `quarto render`.
+For local development the terminal command `quarto preview` can be used.
+
 ## NOTES:
 999 indicates param is not measured at that location.
 
@@ -43,4 +47,3 @@ param_code =  00060 (this is for discharge; each parameter has a different code)
 
 sta_ID = 02292900 (must have the 0 in front)
 
-## Plot the data
