@@ -2,6 +2,15 @@
 This is a quarto website published to github pages using `quarto render`.
 For local development the terminal command `quarto preview` can be used.
 
+## Packages needed:
+1. rmarkdown
+2. leaflet
+3. here
+4. httr
+5. zoo
+6. ggplot2
+7. ggstream
+
 ## NOTES:
 999 indicates param is not measured at that location.
 
