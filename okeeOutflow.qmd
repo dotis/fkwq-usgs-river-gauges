@@ -8,11 +8,11 @@ stations <- c(
   "S-351",
   "S-354",
   "S-308",
-  # "LV8",  # no Disch
+  # "LV8",  # no Disch? no station with this name?
   "HillsCan"
 )
 
-param_name <- "Disch"
+param_name <- "disch-combo"
 
 source("R/plotStationsLine.R")
 plotStationsLine(stations, param_name)

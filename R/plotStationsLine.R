@@ -1,6 +1,7 @@
 plotStationsLine <- function(stations, param_name){
+  # NOTE: special param name "disch-combo"
   source(here::here("R/getData.R"))
-  
+  source(here::here("R/getDischData.R"))
   # Create an empty data frame to hold all data
   all_data <- data.frame()
   
@@ -8,9 +9,13 @@ plotStationsLine <- function(stations, param_name){
   for (station_shortname in stations) {
     # Get the data for the current station using the parameter name
     # print(glue::glue("station:{station_shortname}"))
-    df <- getData(station_shortname, param_name)  
     
-    # TODO: if param_name "Disch-combo" use getDischData to use both tidal filtered disch & disch
+    # if param_name "disch-combo" use getDischData to use both tidal filtered disch & disch
+    if(param_name == "disch-combo"){
+        df <- getDischData(station_shortname)
+    } else {
+        df <- getData(station_shortname, param_name)  
+    }
     
     # Calculate a moving average
     library(zoo)

@@ -1,4 +1,5 @@
 plotStationsStream <- function(stations, param_name){
+  # NOTE: special param name "disch-combo"
   
   # Install and load required packages
   if (!requireNamespace("ggstream", quietly = TRUE)) {
@@ -17,7 +18,12 @@ plotStationsStream <- function(stations, param_name){
   
   for (station_shortname in stations) {
     # Get the data for the current station using the parameter name
-    df <- getData(station_shortname, param_name)
+    # if param_name "disch-combo" use getDischData to use both tidal filtered disch & disch
+    if(param_name == "disch-combo"){
+      df <- getDischData(station_shortname)
+    } else {
+      df <- getData(station_shortname, param_name)  
+    }
     
     # Standardize datetime column to Date format
     df$datetime <- as.Date(df$datetime)
